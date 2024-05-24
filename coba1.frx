@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" TextQuality="AntiAlias" SmoothGraphics="true" StartReportEvent="ReportStartReport" ReportInfo.Created="05/19/2024 21:13:29" ReportInfo.Modified="05/23/2024 17:50:40" ReportInfo.CreatorVersion="2023.3.0.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+		// ...
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <SQLiteDataConnection Name="conn" ConnectionString="rijcmlqcFQtz2/X3mBCNXjGQh8LKP/4F4QLkvxYxsPI+aO6KHNYIH/aqldRKc882LDDdSNbTq3cGcKhZvhQC1EVI9WJPg==" ConnectionStringExpression="[conn]">
+      <TableDataSource Name="Album" DataType="System.Int32" Enabled="true" TableName="Album">
+        <Column Name="AlbumId" DataType="System.Int64"/>
+        <Column Name="Title" DataType="System.String"/>
+        <Column Name="ArtistId" DataType="System.Int64"/>
+      </TableDataSource>
+      <TableDataSource Name="Artist" DataType="System.Int32" Enabled="true" TableName="Artist">
+        <Column Name="ArtistId" DataType="System.Int64"/>
+        <Column Name="Name" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="Customer" DataType="System.Int32" Enabled="true" TableName="Customer">
+        <Column Name="CustomerId" DataType="System.Int64"/>
+        <Column Name="FirstName" DataType="System.String"/>
+        <Column Name="LastName" DataType="System.String"/>
+        <Column Name="Company" DataType="System.String"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="City" DataType="System.String"/>
+        <Column Name="State" DataType="System.String"/>
+        <Column Name="Country" DataType="System.String"/>
+        <Column Name="PostalCode" DataType="System.String"/>
+        <Column Name="Phone" DataType="System.String"/>
+        <Column Name="Fax" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+        <Column Name="SupportRepId" DataType="System.Int64"/>
+      </TableDataSource>
+      <TableDataSource Name="Employee" DataType="System.Int32" Enabled="true" TableName="Employee">
+        <Column Name="EmployeeId" DataType="System.Int64"/>
+        <Column Name="LastName" DataType="System.String"/>
+        <Column Name="FirstName" DataType="System.String"/>
+        <Column Name="Title" DataType="System.String"/>
+        <Column Name="ReportsTo" DataType="System.Int64"/>
+        <Column Name="BirthDate" DataType="System.DateTime"/>
+        <Column Name="HireDate" DataType="System.DateTime"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="City" DataType="System.String"/>
+        <Column Name="State" DataType="System.String"/>
+        <Column Name="Country" DataType="System.String"/>
+        <Column Name="PostalCode" DataType="System.String"/>
+        <Column Name="Phone" DataType="System.String"/>
+        <Column Name="Fax" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="Genre" DataType="System.Int32" Enabled="true" TableName="Genre">
+        <Column Name="GenreId" DataType="System.Int64"/>
+        <Column Name="Name" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="Invoice" DataType="System.Int32" Enabled="true" TableName="Invoice">
+        <Column Name="InvoiceId" DataType="System.Int64"/>
+        <Column Name="CustomerId" DataType="System.Int64"/>
+        <Column Name="InvoiceDate" DataType="System.DateTime"/>
+        <Column Name="BillingAddress" DataType="System.String"/>
+        <Column Name="BillingCity" DataType="System.String"/>
+        <Column Name="BillingState" DataType="System.String"/>
+        <Column Name="BillingCountry" DataType="System.String"/>
+        <Column Name="BillingPostalCode" DataType="System.String"/>
+        <Column Name="Total" DataType="System.Decimal"/>
+      </TableDataSource>
+      <TableDataSource Name="InvoiceLine" DataType="System.Int32" Enabled="true" TableName="InvoiceLine">
+        <Column Name="InvoiceLineId" DataType="System.Int64"/>
+        <Column Name="InvoiceId" DataType="System.Int64"/>
+        <Column Name="TrackId" DataType="System.Int64"/>
+        <Column Name="UnitPrice" DataType="System.Decimal"/>
+        <Column Name="Quantity" DataType="System.Int64"/>
+      </TableDataSource>
+      <TableDataSource Name="MediaType" DataType="System.Int32" Enabled="true" TableName="MediaType">
+        <Column Name="MediaTypeId" DataType="System.Int64"/>
+        <Column Name="Name" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="Playlist" DataType="System.Int32" Enabled="true" TableName="Playlist">
+        <Column Name="PlaylistId" DataType="System.Int64"/>
+        <Column Name="Name" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="PlaylistTrack" DataType="System.Int32" Enabled="true" TableName="PlaylistTrack">
+        <Column Name="PlaylistId" DataType="System.Int64"/>
+        <Column Name="TrackId" DataType="System.Int64"/>
+      </TableDataSource>
+      <TableDataSource Name="Track" DataType="System.Int32" Enabled="true" TableName="Track">
+        <Column Name="TrackId" DataType="System.Int64"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="AlbumId" DataType="System.Int64"/>
+        <Column Name="MediaTypeId" DataType="System.Int64"/>
+        <Column Name="GenreId" DataType="System.Int64"/>
+        <Column Name="Composer" DataType="System.String"/>
+        <Column Name="Milliseconds" DataType="System.Int64"/>
+        <Column Name="Bytes" DataType="System.Int64"/>
+        <Column Name="UnitPrice" DataType="System.Decimal"/>
+      </TableDataSource>
+    </SQLiteDataConnection>
+    <Parameter Name="conn" DataType="System.String" AsString=""/>
+    <Parameter Name="whoami" DataType="System.String" AsString=""/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="56.7" Top="9.45" Width="94.5" Height="18.9" Text="[whoami]" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="66.15"/>
+    <DataBand Name="Data1" Top="111.95" Width="718.2" Height="122.85" DataSource="Employee">
+      <TableObject Name="Table1" Left="141.75" Top="28.35" Width="330.75" Height="94.5">
+        <TableColumn Name="Column1"/>
+        <TableColumn Name="Column2"/>
+        <TableColumn Name="Column3"/>
+        <TableColumn Name="Column4"/>
+        <TableColumn Name="Column5"/>
+        <TableRow Name="Row1">
+          <TableCell Name="Cell1" Text="[Employee.FirstName]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell2" Font="Arial, 10pt"/>
+          <TableCell Name="Cell3" Font="Arial, 10pt"/>
+          <TableCell Name="Cell4" Font="Arial, 10pt"/>
+          <TableCell Name="Cell5" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell6" Font="Arial, 10pt"/>
+          <TableCell Name="Cell7" Font="Arial, 10pt"/>
+          <TableCell Name="Cell8" Font="Arial, 10pt"/>
+          <TableCell Name="Cell9" Font="Arial, 10pt"/>
+          <TableCell Name="Cell10" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row3">
+          <TableCell Name="Cell11" Font="Arial, 10pt"/>
+          <TableCell Name="Cell12" Font="Arial, 10pt"/>
+          <TableCell Name="Cell13" Font="Arial, 10pt"/>
+          <TableCell Name="Cell14" Font="Arial, 10pt"/>
+          <TableCell Name="Cell15" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row4">
+          <TableCell Name="Cell16" Font="Arial, 10pt"/>
+          <TableCell Name="Cell17" Font="Arial, 10pt"/>
+          <TableCell Name="Cell18" Font="Arial, 10pt"/>
+          <TableCell Name="Cell19" Font="Arial, 10pt"/>
+          <TableCell Name="Cell20" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row5">
+          <TableCell Name="Cell21" Font="Arial, 10pt"/>
+          <TableCell Name="Cell22" Font="Arial, 10pt"/>
+          <TableCell Name="Cell23" Font="Arial, 10pt"/>
+          <TableCell Name="Cell24" Font="Arial, 10pt"/>
+          <TableCell Name="Cell25" Font="Arial, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="238.8" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

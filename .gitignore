@@ -1,0 +1,9 @@
+
+*.pdf
+*.csv
+*.xls
+*.xlsx
+*.html
+
+/AnoopFastReport/bin
+/AnoopFastReport/obj

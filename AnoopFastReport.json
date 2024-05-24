@@ -1,0 +1,10 @@
+{
+	"dbDriver": "sqlite",
+	"dbSourceMysql": "Server=localhost;User ID=root;Password=root;Database=chinook;SSL Mode=None;Allow Load Local Infile=True;Allow User Variables=True;Allow Zero DateTime=True;Convert Zero DateTime=True",
+	"dbSource": "data source=D:\\Softwares\\chinook\\Chinook_Sqlite.sqlite",
+	"params": {
+		"whoami": "anoop"
+	},
+	"input": "D:\\Projects\\DotnetProjects\\AnoopFastReport\\coba2.frx",
+	"output": "D:\\Projects\\DotnetProjects\\AnoopFastReport\\coba2.pdf"
+}
